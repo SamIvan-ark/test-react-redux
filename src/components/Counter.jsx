@@ -3,16 +3,17 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { increment, decrement } from '../store/actions';
 
-const handleIncrement = (dispatch) => () => dispatch(increment());
-const handleDecrement = (dispatch) => () => dispatch(decrement());
-
-const Counter = ({ dispatch, counter }) => (
-    <div className="counter">
-        <button id="increment" onClick={handleIncrement(dispatch)}>+1</button>
-        <button id="decrement" onClick={handleDecrement(dispatch)}>-1</button>
-        <p id="counter">{counter}</p>
-    </div>
-);
+const Counter = ({ dispatch, counter }) => {
+    const handleIncrement = (dispatchAction) => () => dispatchAction(increment());
+    const handleDecrement = (dispatchAction) => () => dispatchAction(decrement());
+    return (
+        <div className="counter">
+            <button id="increment" onClick={handleIncrement(dispatch)}>+1</button>
+            <button id="decrement" onClick={handleDecrement(dispatch)}>-1</button>
+            <p id="counter">{counter}</p>
+        </div>
+    );
+};
 
 Counter.propTypes = {
     counter: PropTypes.number,
