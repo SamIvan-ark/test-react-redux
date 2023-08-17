@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { increment, decrement } from '../store/actions';
+import { actions } from '../store/actions';
 
 const Counter = ({ dispatch, counter }) => {
-    const handleIncrement = (dispatchAction) => () => dispatchAction(increment());
-    const handleDecrement = (dispatchAction) => () => dispatchAction(decrement());
+    const handleIncrement = (dispatchAction) => () => dispatchAction(actions.increment());
+    const handleDecrement = (dispatchAction) => () => dispatchAction(actions.decrement());
     return (
         <div className="counter">
             <button id="increment" onClick={handleIncrement(dispatch)}>+1</button>

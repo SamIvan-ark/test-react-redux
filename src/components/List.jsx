@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { add, changeInput } from '../store/actions';
+import { actions } from '../store/actions';
 
 const List = ({ dispatch, inputValue, list }) => {
     const handleListAdd = (dispatchAction) => (event) => {
@@ -9,15 +9,15 @@ const List = ({ dispatch, inputValue, list }) => {
         const formData = new FormData(event.target);
         const name = formData.get('item-name');
 
-        dispatchAction(add(name));
-        dispatchAction(changeInput(''));
+        dispatchAction(actions.add(name));
+        dispatchAction(actions.changeInput(''));
 
         event.target.reset();
     };
 
     const handleInputChange = (dispatchAction) => (event) => {
         const { value } = event.target;
-        dispatchAction(changeInput(value));
+        dispatchAction(actions.changeInput(value));
     };
 
     return (

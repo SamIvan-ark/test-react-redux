@@ -1,14 +1,15 @@
 import { createStore } from 'redux';
+import { actionNames } from './actions';
 
 /* eslint no-underscore-dangle: ["error", { "allow": ["__REDUX_DEVTOOLS_EXTENSION__"] }] */
 const reduxDevtools = window.__REDUX_DEVTOOLS_EXTENSION__;
 
 const counter = (state, action) => {
     switch (action.type) {
-    case 'INCREMENT': {
+    case actionNames.ACTION_INCREMENT: {
         return state + 1;
     }
-    case 'DECREMENT': {
+    case actionNames.ACTION_DECREMENT: {
         return state - 1;
     }
     default:
@@ -18,7 +19,7 @@ const counter = (state, action) => {
 
 const list = (state, action) => {
     switch (action.type) {
-    case 'ADD': {
+    case actionNames.ACTION_ADD: {
         return [...state, action.payload];
     }
     default:
@@ -28,7 +29,7 @@ const list = (state, action) => {
 
 const input = (state, action) => {
     switch (action.type) {
-    case 'CHANGE_INPUT': {
+    case actionNames.ACTION_UPDATE_UNPUT: {
         return action.payload;
     }
     default:
